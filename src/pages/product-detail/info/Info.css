@@ -1,0 +1,22 @@
+.infoContainer {
+    margin-bottom: 32px;
+}
+
+.infoModel {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.info-sold-out,
+.infoPrice {
+    font-size: 35px;
+    margin-top: 7px;
+}
+
+.infoPrice {
+    color: #ff6000;
+}
+
+.info-sold-out {
+    color: rgb(139, 139, 139);
+}

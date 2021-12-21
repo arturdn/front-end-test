@@ -1,0 +1,21 @@
+.specsTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.specsTable td,
+.specsTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.specsTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.specsTable tr:hover {background-color: #ddd;}
+
+.specsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #7e3000;
+    color: white;
+  }

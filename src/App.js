@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dexie from 'dexie';
+
+import Header from './layout/header/Header';
+import Cart from './pages/cart/Cart';
+import Product from './pages/product-detail/Product';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Cart db={new Dexie('Cart')} />} />
+          <Route path="/product/:id" element={<Product db={new Dexie('ProductInfo')} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

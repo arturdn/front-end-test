@@ -1,0 +1,13 @@
+.addButton {
+    background-color: #7e3000;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 42px;
+    letter-spacing: 1px;
+    margin-top: 24px;
+    width: 100%;
+}
+.addButton:active {
+    background-color: #2c07009a;
+}

@@ -1,0 +1,50 @@
+.productBox {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 21%;
+    justify-content: space-between;
+    padding: 20px 15px;
+    text-decoration: none;
+    width: 100%;
+    color: rgb(11, 11, 63);
+}
+
+.productBoxImage {
+    background-color: #dadada75;
+    height: auto;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+}
+
+.info {
+    margin-top: 28px;
+}
+
+.brand,
+.model,
+.price,
+.sold-out {
+    margin: 0 0 4px;
+}
+
+.price,
+.model,
+.sold-out {
+    font-size: 0.9rem;
+}
+
+.brand {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.sold-out {
+    color: #777;
+}
+
+.price {
+    color: #943a01;
+    font-weight: 800;
+}

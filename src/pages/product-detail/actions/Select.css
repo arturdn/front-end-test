@@ -1,0 +1,14 @@
+.selectActionLabel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+@media (min-width: 600px) {
+    .selectActionLabel {
+        width: 220px;
+        margin-left: auto;
+    }
+}
