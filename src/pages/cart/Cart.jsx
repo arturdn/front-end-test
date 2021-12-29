@@ -3,7 +3,7 @@ import "./Cart.css";
 
 import getProductsFromDbFirstOrApi from '../../services/cartServices';
 
-import Mobile from "./components/Mobile";
+import Item from "./components/Item/Item";
 import Searcher from "./components/Searcher/Searcher";
 
 const Cart = ({ db }) => {
@@ -28,7 +28,7 @@ const Cart = ({ db }) => {
             </div>
             {cart.length !== 0 ? (<div className="cartList">
                 {cart.map((item) => (
-                    <Mobile
+                    <Item
                         key={item.id}
                         brand={item.brand}
                         id={item.id}

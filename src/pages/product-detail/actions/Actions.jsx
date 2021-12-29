@@ -3,10 +3,13 @@ import "./Actions.css";
 
 import addToCart from '../../../services/addToCartServices';
 import Select from './Select';
+import { useDispatch } from 'react-redux';
 
 const Actions = ({ productId, colors, internalMemory }) => {
     const [selectedColor, setSelectedColor] = useState(1);
     const [selectedMemory, setSelectedMemory] = useState(1);
+
+    const dispatch = useDispatch()
 
     const onSubmit = async (e) => {
         e.preventDefault();
