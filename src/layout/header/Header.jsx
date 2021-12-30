@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import "./Header.css";
 
 import { Link } from "react-router-dom";
@@ -6,23 +6,10 @@ import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import { IconButton, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [cartItems, setCartItems] = useState(
-    parseInt(sessionStorage.getItem("cartItems"), 10) || 0
-  );
-
-  const updateShoppingCart = (e) => {
-    setCartItems((prevState) => prevState + e.detail.count);
-  };
-
-  useEffect(() => {
-    window.addEventListener("addToBag", (e) => updateShoppingCart(e));
-
-    return () => {
-      window.removeEventListener("addToBag", (e) => updateShoppingCart(e));
-    };
-  }, []);
+  const cartItems = useSelector((state) => state.cartReducer.value);
 
   return (
     <AppBar

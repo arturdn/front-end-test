@@ -4,7 +4,7 @@
     flex-direction: column;
     margin: auto;
     max-width: 1100px;
-    padding-top: 65px
+    padding-top: 75px
 }
 
 .cartHeader {
@@ -31,8 +31,6 @@
         flex-direction: row;
         justify-content: space-between;
         height: 80px;
-    }
-    .cartContainer h2 {
-        margin-left: 25px;
+        width: 98%;
     }
 }

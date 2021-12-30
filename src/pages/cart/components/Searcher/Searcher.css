@@ -1,27 +1,10 @@
-.searcherLabel {
-    display: flex;
-    font-size: 0.8rem;
-    align-items: center;
-}
-
-.searcherInput {
-    border: 1px solid black;
-    height: 40px;
-    padding: 0 16px;
-    width: 270px;
-}
-
-.searcherLabel svg {
-    display: none;
-    height: 27px;
-    margin-right: 7px;
+.searcherContainer {
+    width: 80%;
+    margin-top: 20px;
 }
 
 @media (min-width: 600px) {
-    .searcherLabel {
-        margin-right: 25px;
-    }
-    .searcherLabel svg {
-        display: inline-block;
+    .searcherContainer {
+        width: 300px;
     }
 }

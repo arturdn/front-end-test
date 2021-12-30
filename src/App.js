@@ -1,39 +1,36 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Dexie from 'dexie';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dexie from "dexie";
 
-import Header from './layout/header/Header';
-import Cart from './pages/cart/Cart';
-import Product from './pages/product-detail/Product';
+import Header from "./layout/header/Header";
+import Cart from "./pages/cart/Cart";
+import Product from "./pages/product-detail/Product";
 
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
   palette: {
-    type: 'light',
+    type: "light",
     primary: {
-      main: '#22577E',
-      light: '#5584AC',
-      dark: '#194260',
+      main: "#22577E",
+      light: "#5584AC",
+      dark: "#194260",
     },
     secondary: {
-      main: '#95D1CC',
-      light: '#bdf1ed',
-      dark: '#609c97',
+      main: "#95D1CC",
+      light: "#bdf1ed",
+      dark: "#609c97",
     },
     info: {
-      main: '#F6F2D4',
+      main: "#F6F2D4",
     },
     action: {
-      main: 'white',
-    }
+      main: "white",
+    },
   },
   typography: {
-    fontFamily: [
-      'Rubik',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ["Rubik", "sans-serif"].join(","),
   },
 });
 
@@ -43,8 +40,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Cart db={new Dexie('Cart')} />} />
-          <Route path="/product/:id" element={<Product db={new Dexie('ProductInfo')} />} />
+          <Route exact path="/" element={<Cart db={new Dexie("Cart")} />} />
+          <Route
+            path="/product/:id"
+            element={<Product db={new Dexie("ProductInfo")} />}
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

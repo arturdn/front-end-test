@@ -1,4 +1,4 @@
-const host = 'https://front-test-api.herokuapp.com';
+const host = "https://front-test-api.herokuapp.com";
 
 const getProductFromApi = async (id) => {
   const response = await fetch(`${host}/api/product/${id}`);
@@ -6,7 +6,7 @@ const getProductFromApi = async (id) => {
 };
 
 const getProductFromDbOrApi = async (db, id) => {
-  db.version(1).stores({ product: 'id,value' });
+  db.version(1).stores({ product: "id,value" });
   db.open();
 
   const dbProduct = await db.product.get(id);
@@ -39,6 +39,6 @@ const getProductFromDbOrApi = async (db, id) => {
 
   db.close();
   return dbProduct.product;
-}
+};
 
 export default getProductFromDbOrApi;

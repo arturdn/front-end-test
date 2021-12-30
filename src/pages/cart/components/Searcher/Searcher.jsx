@@ -1,35 +1,32 @@
 import "./Searcher.css";
-
-import SearchIcon from "../../../../layout/icons/SearchIcon";
+import { TextField } from "@mui/material";
 
 const Searcher = ({ defaultProducts, onChange }) => {
-
-    const filterBySearch = async (word) => {
-        const filteredProducts = defaultProducts.filter(
-            (product) =>
-                product.brand.toLowerCase().includes(word) ||
-                product.model.toLowerCase().includes(word)
-        );
-
-        if (filteredProducts.length !== 0) {
-            onChange(filteredProducts);
-        } else {
-            onChange([]);
-        }
-    };
-
-    return (
-        <label className="searcherLabel" htmlFor="searcher">
-            <SearchIcon />
-            <input
-                className="searcherInput"
-                id="searcher"
-                type="text"
-                placeholder="Search..."
-                onChange={(e) => filterBySearch(e.target.value.toLowerCase())}
-            />
-        </label>
+  const filterBySearch = async (word) => {
+    const filteredProducts = defaultProducts.filter(
+      (product) =>
+        product.brand.toLowerCase().includes(word) ||
+        product.model.toLowerCase().includes(word)
     );
+
+    if (filteredProducts.length !== 0) {
+      onChange(filteredProducts);
+    } else {
+      onChange([]);
+    }
+  };
+
+  return (
+    <div className="searcherContainer">
+      <TextField
+        id="outlined-basic"
+        label="Search"
+        variant="outlined"
+        fullWidth
+        onChange={(e) => filterBySearch(e.target.value.toLowerCase())}
+      />
+    </div>
+  );
 };
 
 export default Searcher;
