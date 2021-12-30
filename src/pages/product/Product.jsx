@@ -30,18 +30,7 @@ const Product = ({ db }) => {
           model={product.model}
           price={product.price}
         />
-        <Specifications
-          displaySize={product.displaySize}
-          dimentions={product.dimentions}
-          battery={product.battery}
-          cpu={product.cpu}
-          weight={product.weight}
-          os={product.os}
-          primaryCamera={product.primaryCamera}
-          ram={product.ram}
-          bluetooth={product.bluetooth}
-          secondaryCamera={product.secondaryCmera}
-        />
+        <Specifications product={product} />
         <Actions
           productId={product.id}
           colors={product.colors}

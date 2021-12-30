@@ -12,7 +12,7 @@ const Actions = ({ productId, colors, internalMemory }) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (e) => {
+  const handleAddToCart = async (e) => {
     e.preventDefault();
 
     const response = await addToCart({
@@ -25,27 +25,25 @@ const Actions = ({ productId, colors, internalMemory }) => {
 
   return (
     <div>
-      <form onSubmit={(e) => onSubmit(e)}>
-        {internalMemory && (
-          <Select
-            id="memory"
-            label="Internal storage"
-            options={internalMemory}
-            onChange={(e) => setSelectedMemory(e.target.selectedIndex + 1)}
-          />
-        )}
-        {colors && (
-          <Select
-            id="color"
-            label="Color"
-            options={colors}
-            onChange={(e) => setSelectedColor(e.target.selectedIndex + 1)}
-          />
-        )}
-        <button className="addButton" type="submit">
-          Add to cart
-        </button>
-      </form>
+      {internalMemory && (
+        <Select
+          id="memory"
+          label="Internal storage"
+          options={internalMemory}
+          onChange={(e) => setSelectedMemory(e.target.selectedIndex + 1000)}
+        />
+      )}
+      {colors && (
+        <Select
+          id="color"
+          label="Color"
+          options={colors}
+          onChange={(e) => setSelectedColor(e.target.selectedIndex + 1000)}
+        />
+      )}
+      <button className="addButton" onClick={handleAddToCart}>
+        Add to cart
+      </button>
     </div>
   );
 };

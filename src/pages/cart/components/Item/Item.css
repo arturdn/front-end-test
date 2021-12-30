@@ -10,6 +10,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 300ms !important;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95) !important;
+}
+
+.cardContent:hover {
+  transform: scale(1.01);
+  -webkit-box-shadow: 3px 4px 8px 3px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 4px 8px 3px rgba(0, 0, 0, 0.35);
 }
 
 .productBoxImage {
@@ -21,10 +29,19 @@
 
 .cardContent__Info {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 90%;
   height: 85px;
   text-align: "left";
 }
 
 @media (min-width: 600px) {
+  .cardContent__Info {
+    flex-direction: row;
+  }
+
+  .cardContent__Info__button {
+    align-self: end;
+  }
 }

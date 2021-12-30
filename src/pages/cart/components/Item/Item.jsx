@@ -6,21 +6,12 @@ import { Button, Typography } from "@mui/material";
 import "./Item.css";
 import { Link } from "react-router-dom";
 
-const Item = ({ brand, id, imgUrl, model, price }) => {
-  const [cardState, setcardState] = useState({
-    raised: false,
-    shadow: 1,
-  });
+const Item = ({ props }) => {
+  const { brand, id, imgUrl, model, price } = props;
 
   return (
     <Link to={`/product/${id}`} className="productBox">
-      <Card
-        onMouseOver={() => setcardState({ raised: true, shadow: 3 })}
-        onMouseOut={() => setcardState({ raised: false, shadow: 1 })}
-        raised={cardState.raised}
-        zdepth={cardState.shadow}
-        className="cardContent"
-      >
+      <Card className="cardContent">
         <img
           className="productBoxImage"
           alt={model}
@@ -49,8 +40,8 @@ const Item = ({ brand, id, imgUrl, model, price }) => {
               </Typography>
             )}
           </div>
-          <div className="cartContent_Info_button">
-            <Button variant="text">sfg</Button>
+          <div className="cardContent__Info__button">
+            <Button size="large">sfg</Button>
           </div>
         </div>
       </Card>

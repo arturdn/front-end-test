@@ -29,14 +29,7 @@ const Cart = ({ db }) => {
       {cart.length !== 0 ? (
         <div className="cartList">
           {cart.map((item) => (
-            <Item
-              key={item.id}
-              brand={item.brand}
-              id={item.id}
-              imgUrl={item.imgUrl}
-              model={item.model}
-              price={item.price}
-            />
+            <Item props={item} key={item.id} />
           ))}
         </div>
       ) : (
