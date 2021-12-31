@@ -27,16 +27,16 @@ const Specifications = (props) => {
 
   const initializeSpecs = () => {
     const specsData = {
-      battery: validateSpec(battery),
-      primaryCamera: validateSpec(primaryCamera),
-      secondaryCamera: validateSpec(secondaryCmera),
-      dimentions: validateSpec(dimentions),
-      bluetooth: validateSpec(bluetooth),
-      ram: validateSpec(ram),
-      cpu: validateSpec(cpu),
-      os: validateSpec(os),
-      weight: validateSpec(weight),
-      displaySize: validateSpec(displaySize),
+      Battery: validateSpec(battery),
+      'Primary Camera': validateSpec(primaryCamera),
+      'Secondary Camera': validateSpec(secondaryCmera),
+      Dimentions: validateSpec(dimentions),
+      Bluetooth: validateSpec(bluetooth),
+      RAM: validateSpec(ram),
+      CPU: validateSpec(cpu),
+      System: validateSpec(os),
+      Weight: validateSpec(weight),
+      'Display Size': validateSpec(displaySize),
     };
     console.log(specsData);
     return specsData;

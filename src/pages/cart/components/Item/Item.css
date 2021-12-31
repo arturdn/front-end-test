@@ -1,5 +1,5 @@
 .productBox {
-  flex: 1 0 21%;
+  flex: 1 0 22%;
   padding: 7px;
   min-width: 160px;
   text-decoration: none;
@@ -56,5 +56,9 @@
   }
   .cardContent__Info__button {
     display: block;
+  }
+  .text__body2 {
+    font-size: 0.84rem !important;
+    margin-top: -2px !important;
   }
 }

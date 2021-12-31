@@ -48,7 +48,7 @@ const Item = ({ props }) => {
             >
               {brand}
             </Typography>
-            <Typography variant="body2" color="primary.dark">
+            <Typography variant="body2" color="primary.dark" className="text__body2">
               {model}
             </Typography>
             {price ? (
