@@ -4,10 +4,10 @@ import { useParams } from "react-router";
 
 import getProductFromDbOrApi from "../../services/productServices";
 import Actions from "./actions/Actions";
-import Info from "./info/Info";
 import Specifications from "./specifications/Specifications";
-import CloseIcon from "../../layout/icons/CloseIcon";
+import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import { Divider, Typography } from "@mui/material";
 
 const Product = ({ db }) => {
   const { id } = useParams();
@@ -21,21 +21,25 @@ const Product = ({ db }) => {
   return (
     <div className="detailsContainer">
       <Link className="closeDetails" to="/">
-        <CloseIcon />
+        <CloseIcon color="primary" />
       </Link>
       <img className="detailsImage" alt={product.model} src={product.imgUrl} />
       <div className="detailsInfo">
-        <Info
-          brand={product.brand}
-          model={product.model}
-          price={product.price}
-        />
+        <Typography variant="h5" color="primary.dark">
+          {product.brand} - {product.model}
+        </Typography>
+        {product.price ? (
+          <Typography variant="h5" fontWeight="600" color="primary.dark">
+            € {product.price}
+          </Typography>
+        ) : (
+          <Typography variant="h5" color="secondary.dark">
+            SOLD OUT
+          </Typography>
+        )}
+        <Divider sx={{ mt: 2 }} />
+        <Actions product={product} />
         <Specifications product={product} />
-        <Actions
-          productId={product.id}
-          colors={product.colors}
-          internalMemory={product.internalMemory}
-        />
       </div>
     </div>
   );

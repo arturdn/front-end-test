@@ -7,6 +7,9 @@ const getProductsFromApi = async () => {
 };
 
 const getProductsFromDbFirstOrApi = async (db) => {
+  if (!db) {
+    return undefined;
+  }
   db.version(1).stores({ products: "id,value" });
   db.open();
 

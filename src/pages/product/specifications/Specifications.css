@@ -9,13 +9,13 @@
     padding: 8px;
 }
 
-.specsTable tr:nth-child(even){background-color: #f2f2f2;}
+.specsTable tr:nth-child(even){background-color: #edf8f7;}
 
-.specsTable tr:hover {background-color: #ddd;}
+.specsTable tr:hover {background-color: #dceff5;}
 
 .specsTable th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #7e3000;
+    background-color: #22577E;
     color: white;
   }

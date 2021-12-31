@@ -26,7 +26,7 @@ const Cart = ({ db }) => {
         </Typography>
         <Searcher defaultProducts={productsList.current} onChange={setCart} />
       </div>
-      {cart.length !== 0 ? (
+      {cart?.length && cart.length !== 0 ? (
         <div className="cartList">
           {cart.map((item) => (
             <Item props={item} key={item.id} />

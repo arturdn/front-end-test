@@ -15,10 +15,6 @@
     align-items: center;
 }
 
-.cartContainer h2 {
-    display: flex;
-}
-
 .cartList {
     display: flex;
     flex-flow: row wrap;

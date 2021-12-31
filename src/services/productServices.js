@@ -1,11 +1,14 @@
 const host = "https://front-test-api.herokuapp.com";
 
-const getProductFromApi = async (id) => {
+export const getProductFromApi = async (id) => {
   const response = await fetch(`${host}/api/product/${id}`);
   return response.json();
 };
 
 const getProductFromDbOrApi = async (db, id) => {
+  if (!db) {
+    return undefined;
+  }
   db.version(1).stores({ product: "id,value" });
   db.open();
 

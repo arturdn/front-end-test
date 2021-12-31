@@ -2,13 +2,14 @@ import { useState } from "react";
 import "./Actions.css";
 
 import addToCart from "../../../services/addToCartServices";
-import Select from "./Select";
 import { useDispatch } from "react-redux";
 import { increment } from "../../../redux/features/cartCounter/cartCounterSlice";
+import { Button, MenuItem, Select } from "@mui/material";
 
-const Actions = ({ productId, colors, internalMemory }) => {
-  const [selectedColor, setSelectedColor] = useState(1);
-  const [selectedMemory, setSelectedMemory] = useState(1);
+const Actions = (props) => {
+  const { id, options, colors, internalMemory, price } = props.product;
+  const [selectedColor, setSelectedColor] = useState(1000);
+  const [selectedMemory, setSelectedMemory] = useState(2000);
 
   const dispatch = useDispatch();
 
@@ -16,7 +17,7 @@ const Actions = ({ productId, colors, internalMemory }) => {
     e.preventDefault();
 
     const response = await addToCart({
-      id: productId,
+      id: id,
       colorCode: selectedColor.toString(),
       storageCode: selectedMemory.toString(),
     });
@@ -24,26 +25,57 @@ const Actions = ({ productId, colors, internalMemory }) => {
   };
 
   return (
-    <div>
+    <div className="actionsContainer">
       {internalMemory && (
         <Select
-          id="memory"
-          label="Internal storage"
-          options={internalMemory}
-          onChange={(e) => setSelectedMemory(e.target.selectedIndex + 1000)}
-        />
+          id="internal-storage"
+          labelId="internal-storage"
+          value={selectedMemory}
+          onChange={(e) => setSelectedMemory(e.target.value)}
+          className="actionSelect"
+          size="small"
+        >
+          {options.storages.map((option) => {
+            return (
+              <MenuItem key={option.code} value={option.code}>
+                {option.name}
+              </MenuItem>
+            );
+          })}
+        </Select>
       )}
       {colors && (
         <Select
           id="color"
-          label="Color"
-          options={colors}
-          onChange={(e) => setSelectedColor(e.target.selectedIndex + 1000)}
-        />
+          labelId="color"
+          value={selectedColor}
+          onChange={(e) => setSelectedColor(e.target.value)}
+          className="actionSelect"
+          size="small"
+        >
+          {options.colors.map((option) => {
+            return (
+              <MenuItem key={option.code} value={option.code}>
+                {option.name}
+              </MenuItem>
+            );
+          })}
+        </Select>
       )}
-      <button className="addButton" onClick={handleAddToCart}>
-        Add to cart
-      </button>
+      {price ? (
+        <Button
+          variant="contained"
+          className="addButton"
+          size="large"
+          onClick={handleAddToCart}
+        >
+          Add to cart
+        </Button>
+      ) : (
+        <Button variant="contained" className="addButton" size="large" disabled>
+          Add to cart
+        </Button>
+      )}
     </div>
   );
 };

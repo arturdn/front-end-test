@@ -1,10 +1,11 @@
+import { useRef } from "react";
 import "./Specifications.css";
 
 const Specifications = (props) => {
   const {
     battery,
     primaryCamera,
-    secondaryCamera,
+    secondaryCmera,
     dimentions,
     bluetooth,
     ram,
@@ -13,6 +14,35 @@ const Specifications = (props) => {
     weight,
     displaySize,
   } = props.product;
+
+  const validateSpec = (spec) => {
+    if (!spec || spec === "-") {
+      return null;
+    }
+    if (Array.isArray(spec)) {
+      return spec.map((item, index) => `${index !== 0 ? " -" : ""} ${item}`);
+    }
+    return spec;
+  };
+
+  const initializeSpecs = () => {
+    const specsData = {
+      battery: validateSpec(battery),
+      primaryCamera: validateSpec(primaryCamera),
+      secondaryCamera: validateSpec(secondaryCmera),
+      dimentions: validateSpec(dimentions),
+      bluetooth: validateSpec(bluetooth),
+      ram: validateSpec(ram),
+      cpu: validateSpec(cpu),
+      os: validateSpec(os),
+      weight: validateSpec(weight),
+      displaySize: validateSpec(displaySize),
+    };
+    console.log(specsData);
+    return specsData;
+  };
+
+  const specs = useRef(initializeSpecs());
 
   return (
     <div className="specsContainer">
@@ -24,46 +54,12 @@ const Specifications = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>CPU</td>
-            <td>{cpu ? cpu : "None"}</td>
-          </tr>
-          <tr>
-            <td>RAM</td>
-            <td>{ram ? ram : "None"}</td>
-          </tr>
-          <tr>
-            <td>Display Size</td>
-            <td>{displaySize ? displaySize : "No information"}</td>
-          </tr>
-          <tr>
-            <td>Dimentions</td>
-            <td>{dimentions ? dimentions : "No information"}</td>
-          </tr>
-          <tr>
-            <td>Weight</td>
-            <td>{weight ? weight : "No information"}</td>
-          </tr>
-          <tr>
-            <td>Bluetooth</td>
-            <td>{bluetooth ? bluetooth : "None"}</td>
-          </tr>
-          <tr>
-            <td>Battery</td>
-            <td>{battery ? battery : "No information"}</td>
-          </tr>
-          <tr>
-            <td>Primary Camera</td>
-            <td>{primaryCamera ? primaryCamera : "None"}</td>
-          </tr>
-          <tr>
-            <td>Secondary Camera</td>
-            <td>{secondaryCamera ? secondaryCamera : "None"}</td>
-          </tr>
-          <tr>
-            <td>OS</td>
-            <td>{os ? os : "No information"}</td>
-          </tr>
+          {Object.entries(specs.current).map(([specTitle, specValue]) => (
+            <tr key={specTitle}>
+              <td>{specTitle}</td>
+              <td>{specValue ? specValue : "None"}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
