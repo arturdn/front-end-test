@@ -1,19 +1,28 @@
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 import "./Specifications.css";
 
 const Specifications = (props) => {
-  const {
-    battery,
-    primaryCamera,
-    secondaryCmera,
-    dimentions,
-    bluetooth,
-    ram,
-    cpu,
-    os,
-    weight,
-    displaySize,
-  } = props.product;
+
+  const [specs, setSpecs] = useState({});
+
+  useEffect(() => {
+    const initializeSpecs = () => {
+      const specsData = {
+        Battery: validateSpec(props.product.battery),
+        "Primary Camera": validateSpec(props.product.primaryCamera),
+        "Secondary Camera": validateSpec(props.product.secondaryCmera),
+        Dimentions: validateSpec(props.product.dimentions),
+        Bluetooth: validateSpec(props.product.bluetooth),
+        RAM: validateSpec(props.product.ram),
+        CPU: validateSpec(props.product.cpu),
+        System: validateSpec(props.product.os),
+        Weight: validateSpec(props.product.weight),
+        "Display Size": validateSpec(props.product.displaySize),
+      };
+      return specsData;
+    };
+    setSpecs(initializeSpecs);
+  }, [props]);
 
   const validateSpec = (spec) => {
     if (!spec || spec === "-") {
@@ -25,25 +34,6 @@ const Specifications = (props) => {
     return spec;
   };
 
-  const initializeSpecs = () => {
-    const specsData = {
-      Battery: validateSpec(battery),
-      'Primary Camera': validateSpec(primaryCamera),
-      'Secondary Camera': validateSpec(secondaryCmera),
-      Dimentions: validateSpec(dimentions),
-      Bluetooth: validateSpec(bluetooth),
-      RAM: validateSpec(ram),
-      CPU: validateSpec(cpu),
-      System: validateSpec(os),
-      Weight: validateSpec(weight),
-      'Display Size': validateSpec(displaySize),
-    };
-    console.log(specsData);
-    return specsData;
-  };
-
-  const specs = useRef(initializeSpecs());
-
   return (
     <div className="specsContainer">
       <table className="specsTable">
@@ -54,10 +44,10 @@ const Specifications = (props) => {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(specs.current).map(([specTitle, specValue]) => (
+          {Object.entries(specs).map(([specTitle, specValue]) => (
             <tr key={specTitle}>
               <td>{specTitle}</td>
-              <td>{specValue ? specValue : "None"}</td>
+              <td>{specValue ? specValue : "Not specified"}</td>
             </tr>
           ))}
         </tbody>
